@@ -1,0 +1,6 @@
+swarm:
+  network:
+    socket-binding-groups:
+      standard-sockets:
+        port-offset: 10
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process-application
+        xmlns="http://www.camunda.org/schema/1.0/ProcessApplication"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <process-engine name="default">
+        <configuration>org.camunda.bpm.engine.cdi.CdiJtaProcessEngineConfiguration</configuration>
+        <datasource>java:jboss/datasources/CamundaDS</datasource>
+        <properties>
+            <property name="history">none</property>
+            <property name="databaseSchemaUpdate">true</property>
+            <property name="authorizationEnabled">false</property>
+            <property name="jobExecutorActivate">true</property>
+            <property name="jobExecutorDeploymentAware">true</property>
+            <!--property name="jpaPersistenceUnitName">camunda-embedded-engine</property-->
+            <!--  property name="jpaHandleTransaction" value="true" />
+            <property name="jpaCloseEntityManager" value="true" /> -->
+            <property name="transactionManagerJndiName">java:/TransactionManager</property>
+        </properties>
+        <plugins>
+
+            <!-- plugin enabling Process Application event listener support -->
+            <plugin>
+                <class>org.camunda.bpm.application.impl.event.ProcessApplicationEventListenerPlugin</class>
+            </plugin>
+
+        </plugins>
+    </process-engine>
+
+    <process-archive>
+        <process-engine>default</process-engine>
+        <!--resource>processes/idm/change_user_rights_process.bpmn</resource-->
+        <properties>
+            <property name="isDeleteUponUndeploy">false</property>
+            <property name="isScanForProcessDefinitions">false</property>
+        </properties>
+    </process-archive>
+
+</process-application>

@@ -1,0 +1,35 @@
+<subsystem xmlns="urn:jboss:domain:datasources:4.0">
+    <datasources>
+        <drivers>
+            <driver name="h2xa" module="com.h2database.h2">
+                <driver-class>org.h2.Driver</driver-class>
+                <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+            </driver>
+        </drivers>
+        <!--TODO: check why one database mus be named ExampleDS and configure DS using YAML -->
+        <xa-datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="XAGrpdirDS">
+            <driver>h2xa</driver>
+            <xa-datasource-property name="URL">jdbc:h2:mem:test1;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</xa-datasource-property>
+            <security>
+                <user-name>admin</user-name>
+                <password>admin</password>
+            </security>
+            <xa-pool>
+                <is-same-rm-override>false</is-same-rm-override>
+                <no-tx-separate-pools />
+            </xa-pool>
+        </xa-datasource>
+        <xa-datasource jndi-name="java:jboss/datasources/CamundaDS" pool-name="XACamundaDS">
+            <driver>h2xa</driver>
+            <xa-datasource-property name="URL">jdbc:h2:mem:test1;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</xa-datasource-property>
+            <security>
+                <user-name>admin</user-name>
+                <password>admin</password>
+            </security>
+            <xa-pool>
+                <is-same-rm-override>false</is-same-rm-override>
+                <no-tx-separate-pools />
+            </xa-pool>
+        </xa-datasource>
+    </datasources>
+</subsystem>

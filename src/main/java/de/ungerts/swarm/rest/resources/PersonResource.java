@@ -4,7 +4,6 @@ import de.ungerts.swarm.data.model.Person;
 import de.ungerts.swarm.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.wildfly.swarm.spi.runtime.annotations.Post;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
@@ -15,20 +14,21 @@ import java.util.Optional;
 @Path("person")
 public class PersonResource {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(PersonResource.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PersonResource.class);
 
     @Inject
     private PersonService personService;
 
+    @GET
     @Path("{personId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response readPerson(@PathParam("personId") String personId) {
+    public Response readPerson(@PathParam("personId") Long personId) {
         try {
             Optional<Person> personOptional = personService.readPerson(personId);
             if (personOptional.isPresent()) {
                 return Response.ok().entity(personOptional.get()).build();
             } else {
-                return Response.status(Response.Status.NOT_FOUND).build();
+                return Response.status(Response.Status.NO_CONTENT).build();
             }
 
         } catch (RuntimeException e) {
@@ -38,7 +38,7 @@ public class PersonResource {
     }
 
 
-    @Post
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createPerson(Person person) {
@@ -56,8 +56,9 @@ public class PersonResource {
     }
 
     @DELETE
+    @Path("{personId}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response deletePerson(String personId) {
+    public Response deletePerson(@PathParam("personId") Long personId) {
         try {
             personService.deletePerson(personId);
             return Response.ok().build();
@@ -67,6 +68,36 @@ public class PersonResource {
         }
     }
 
+    @PUT
+    @Path("{personId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updatePerson(@PathParam("personId") Long personId, Person person) {
+        person.setId(personId);
+        try {
+            Optional<Person> personOptional = personService.updatePerson(person);
+            if (personOptional.isPresent()) {
+                return Response.ok().entity(personOptional.get()).build();
+            } else {
+                return Response.status(Response.Status.NO_CONTENT).build();
+            }
 
+        } catch (RuntimeException e) {
+            LOGGER.error("Could not update person!", e);
+            return Response.serverError().build();
+        }
+    }
+
+    @GET
+    @Path("test")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Person readTestPerson() {
+        Person person = new Person();
+        person.setId(999L);
+        person.setPersonnelnumber("1-232-3");
+        person.setLastname("Musermann");
+        person.setFirstname("Max");
+        return person;
+    }
 
 }

@@ -1,4 +1,7 @@
-package de.ungerts.swarm.bpm.process.create_person_process;
+package de.ungerts.swarm.bpm.process;
 
 public class CreatePersonProcess {
+
+    private static final String PROCESS_NAME = "CreateUserProcess";
+
 }

@@ -6,9 +6,9 @@ public class PersonEvent {
 
     private Long timestamp;
 
-    private Optional<PersonVO> oldPersonOptional;
+    private PersonVO oldPerson;
 
-    private Optional<PersonVO> newPersonOptional;
+    private PersonVO newPerson;
 
     private EventType eventType;
 
@@ -28,20 +28,20 @@ public class PersonEvent {
         this.eventType = eventType;
     }
 
-    public Optional<PersonVO> getOldPersonOptional() {
-        return oldPersonOptional;
+    public PersonVO getOldPerson() {
+        return oldPerson;
     }
 
-    public void setOldPersonOptional(Optional<PersonVO> oldPersonOptional) {
-        this.oldPersonOptional = oldPersonOptional;
+    public void setOldPerson(PersonVO oldPerson) {
+        this.oldPerson = oldPerson;
     }
 
-    public Optional<PersonVO> getNewPersonOptional() {
-        return newPersonOptional;
+    public PersonVO getNewPerson() {
+        return newPerson;
     }
 
-    public void setNewPersonOptional(Optional<PersonVO> newPersonOptional) {
-        this.newPersonOptional = newPersonOptional;
+    public void setNewPerson(PersonVO newPerson) {
+        this.newPerson = newPerson;
     }
 
     public enum EventType {

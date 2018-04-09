@@ -29,7 +29,7 @@
 
     <process-archive>
         <process-engine>default</process-engine>
-        <!--resource>processes/idm/change_user_rights_process.bpmn</resource-->
+        <resource>bpm/process/CreateUserProcess.bpmn</resource>
         <properties>
             <property name="isDeleteUponUndeploy">false</property>
             <property name="isScanForProcessDefinitions">false</property>

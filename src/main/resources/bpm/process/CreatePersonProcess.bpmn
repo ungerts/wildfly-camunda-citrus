@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.11.3">
+  <bpmn:process id="CreatePersonProcess" name="Create Person Process" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_CreatePerson" name="Create Person">
+      <bpmn:outgoing>SequenceFlow_0ulpwi7</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0ulpwi7" sourceRef="StartEvent_CreatePerson" targetRef="Task_CreateDefaultPermissions" />
+    <bpmn:sequenceFlow id="SequenceFlow_0nwsme1" sourceRef="Task_CreateDefaultPermissions" targetRef="Task_CreateEmailAccount" />
+    <bpmn:sequenceFlow id="SequenceFlow_0h0bvtv" sourceRef="Task_CreateEmailAccount" targetRef="Task_InformAdministrator" />
+    <bpmn:endEvent id="EndEvent_PersonCreated" name="Person Created">
+      <bpmn:incoming>SequenceFlow_0jos462</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0jos462" sourceRef="Task_InformAdministrator" targetRef="EndEvent_PersonCreated" />
+    <bpmn:serviceTask id="Task_CreateDefaultPermissions" name="Create Default Permissions" camunda:asyncBefore="true" camunda:delegateExpression="#{createPersonProcessDelegate}">
+      <bpmn:incoming>SequenceFlow_0ulpwi7</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0nwsme1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_CreateEmailAccount" name="Create Email Account" camunda:asyncBefore="true" camunda:delegateExpression="#{createPersonProcessDelegate}">
+      <bpmn:incoming>SequenceFlow_0nwsme1</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0h0bvtv</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Task_InformAdministrator" name="Inform Administrator" camunda:asyncBefore="true" camunda:delegateExpression="#{createPersonProcessDelegate}">
+      <bpmn:incoming>SequenceFlow_0h0bvtv</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0jos462</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="CreatePersonProcess">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_CreatePerson">
+        <dc:Bounds x="182" y="238" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="166" y="274" width="71" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ulpwi7_di" bpmnElement="SequenceFlow_0ulpwi7">
+        <di:waypoint xsi:type="dc:Point" x="218" y="256" />
+        <di:waypoint xsi:type="dc:Point" x="407" y="256" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="312.5" y="235" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0nwsme1_di" bpmnElement="SequenceFlow_0nwsme1">
+        <di:waypoint xsi:type="dc:Point" x="507" y="256" />
+        <di:waypoint xsi:type="dc:Point" x="709" y="256" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="608" y="235" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SequenceFlow_0h0bvtv_di" bpmnElement="SequenceFlow_0h0bvtv">
+        <di:waypoint xsi:type="dc:Point" x="809" y="256" />
+        <di:waypoint xsi:type="dc:Point" x="991" y="256" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="900" y="235" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_13jhgsk_di" bpmnElement="EndEvent_PersonCreated">
+        <dc:Bounds x="1255" y="238" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1235" y="278" width="77" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0jos462_di" bpmnElement="SequenceFlow_0jos462">
+        <di:waypoint xsi:type="dc:Point" x="1091" y="256" />
+        <di:waypoint xsi:type="dc:Point" x="1255" y="256" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1173" y="235" width="0" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_0bt0uv6_di" bpmnElement="Task_CreateDefaultPermissions">
+        <dc:Bounds x="407" y="216" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_064js1m_di" bpmnElement="Task_CreateEmailAccount">
+        <dc:Bounds x="709" y="216" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="ServiceTask_1nv9hy5_di" bpmnElement="Task_InformAdministrator">
+        <dc:Bounds x="991" y="216" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

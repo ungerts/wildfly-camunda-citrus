@@ -1,8 +1,8 @@
 package de.ungerts.swarm.service.impl;
 
 import de.ungerts.swarm.data.model.Person;
+import de.ungerts.swarm.data.vo.PersonVO;
 import de.ungerts.swarm.event.PersonEvent;
-import de.ungerts.swarm.event.PersonVO;
 import de.ungerts.swarm.service.PersonService;
 import ma.glasnost.orika.MapperFacade;
 import ma.glasnost.orika.MapperFactory;

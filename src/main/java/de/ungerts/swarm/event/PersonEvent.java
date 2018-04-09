@@ -1,6 +1,6 @@
 package de.ungerts.swarm.event;
 
-import java.util.Optional;
+import de.ungerts.swarm.data.vo.PersonVO;
 
 public class PersonEvent {
 

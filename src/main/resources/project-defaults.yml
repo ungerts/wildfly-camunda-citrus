@@ -3,4 +3,15 @@ swarm:
     socket-binding-groups:
       standard-sockets:
         port-offset: 10
+        outbound-socket-bindings:
+          mail-smtp:
+            remote-host: localhost
+            remote-port: 8092
+  mail:
+    mail-sessions:
+      mailserver:
+        from: no-reply@example.org
+        jndi: java:jboss/mail/MailServer
+        smtp-server:
+          outbound-socket-binding-ref: mail-smtp
 

@@ -1,6 +1,10 @@
-package de.ungerts.swarm.event;
+package de.ungerts.swarm.data.vo;
 
-public class PersonVO {
+import java.io.Serializable;
+
+public class PersonVO implements Serializable {
+
+    static final long serialVersionUID = 42L;
 
     private Long id;
 

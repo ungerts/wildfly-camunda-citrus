@@ -1,0 +1,6 @@
+image: maven:openjdk:8-jdk
+pipelines:
+  default:
+    - step:
+        script:
+          - mvn clean verify

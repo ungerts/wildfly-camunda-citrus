@@ -58,6 +58,7 @@ public class CreatePersonProcessIT extends JUnit4CitrusTestDesigner {
                 .response(HttpStatus.CREATED)
                 .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
                 .payload(new ClassPathResource("messages/createEmailResponse.json"));
+        //TODO: delete
         sleep(1000);
         Long personId = (Long) getVariables().get("personId");
         String emailText = String.format("Person %s %s with id %d and email %s created!", firstname, lastname, personId, emailAddress);

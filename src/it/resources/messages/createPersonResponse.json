@@ -1,0 +1,6 @@
+{
+  "id": ${personId},
+  "firstname" : "@equalsIgnoreCase(${firstname})@",
+  "lastname" : "@equalsIgnoreCase(${lastname})@",
+  "personnelnumber" : "@equalsIgnoreCase(${personnelnumber})@"
+}

@@ -47,6 +47,7 @@ public class CreatePersonProcessServiceImpl implements CreatePersonProcessServic
             msg.setText(text);
             msg.setSubject("Person created");
             msg.setRecipients(Message.RecipientType.TO, "admins@example.org");
+            msg.setFrom("no-reply@example.org");
             Transport.send(msg);
         } catch (MessagingException e) {
             throw new RuntimeException("Could not send mail", e);

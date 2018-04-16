@@ -1,0 +1,5 @@
+{
+  "firstname" : "${firstname}",
+  "lastname" : "${lastname}",
+  "personnelnumber" : "${personnelnumber}"
+}

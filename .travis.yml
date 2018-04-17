@@ -2,5 +2,3 @@ language: java
 jdk:
   - oraclejdk8
 script: mvn clean verify
-env:
-  - JAVA_OPTS=-Djava.net.preferIPv4Stack=true

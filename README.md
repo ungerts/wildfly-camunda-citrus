@@ -11,6 +11,9 @@ SOAP, and many more).
 directly unsing the Camunda engine. As BPMN process interact with a broad spectrum of services realized in different technologies
 and provided by different parties, integration tests are a great challenge when testing the process implementation.
 
+[WildFly Swarm](http://wildfly-swarm.io/) offers the possibility to package a JEE application with the server runtime
+to a Jar file.
+
 ### Create Person Process ###
 
 We use a simplifyed Create Person Process to demonstrate how Citrus can help testing process implementations.

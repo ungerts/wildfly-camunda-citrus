@@ -144,7 +144,7 @@
                         <filter>src/assembly/filter.properties</filter>
                     </filters>-->
                     <descriptors>
-                        <descriptor>src/main/docker/assemply.xml</descriptor>
+                        <descriptor>src/main/docker/assembly.xml</descriptor>
                     </descriptors>
                 </configuration>
             </plugin>
@@ -350,7 +350,7 @@
                                     <name>ungerts/camunda-swarm</name>
                                     <build>
                                         <from>openjdk:8-jdk-alpine</from>
-                                        <entryPoint>java -jar /usr/share/camunda-wildfly/${build.finalName}-swarm.jar</entryPoint>
+                                        <entryPoint>java -jar /usr/share/camunda-wildfly/target/${build.finalName}-swarm.jar</entryPoint>
                                         <tags>
                                             <tag>latest</tag>
                                             <tag>${project.version}</tag>

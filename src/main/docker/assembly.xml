@@ -8,7 +8,8 @@
     <fileSets>
         <fileSet>
             <directory>${basedir}</directory>
-            <outputDirectory>/</outputDirectory>
+            <outputDirectory>.</outputDirectory>
+            <filtered>true</filtered>
             <includes>
                 <include>target/camunda-swarm.jar</include>
             </includes>

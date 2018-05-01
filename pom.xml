@@ -87,6 +87,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.0.0</version>
                 <executions>
                     <execution>
                         <id>add-source</id>
@@ -117,7 +118,9 @@
                 </executions>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.21.0</version>
                 <configuration>
                     <includes>
                         <include>**/*IT.java</include>
@@ -350,7 +353,7 @@
                                     <name>ungerts/camunda-swarm</name>
                                     <build>
                                         <from>openjdk:8-jdk-alpine</from>
-                                        <entryPoint>java -jar /usr/share/camunda-wildfly/target/${build.finalName}-swarm.jar</entryPoint>
+                                        <entryPoint>java -jar /usr/share/camunda-wildfly/target/${project.build.finalName}-swarm.jar</entryPoint>
                                         <tags>
                                             <tag>latest</tag>
                                             <tag>${project.version}</tag>

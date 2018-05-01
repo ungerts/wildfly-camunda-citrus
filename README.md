@@ -21,7 +21,20 @@ We use a simplifyed Create Person Process to demonstrate how Citrus can help tes
 ![Create Person Process](./doc/CreatePersonProcess.svg)
 
 ### Executing the Test ###
+Execute the test locally:
 
 ```
 mvn clean verify
+```
+
+The test can also be executed within a Docker container:
+
+```
+docker run -it --rm --name camunda-swarm -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven:latest mvn clean verify
+```
+
+### Building the Docker Container ###
+
+```
+mvn clean verify -Pdocker
 ```
